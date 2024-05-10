@@ -14,7 +14,7 @@ import Flat
 from logging import INFO
 import Order
 import image_lib
-import imp
+import importlib
 import fixpix
 import nirspec_constants
 
@@ -130,7 +130,7 @@ def reduce_frame(raw, out_dir, flatCacher=None, eta=None, arc=None, dark=None):
         raise
     
     # find and apply wavelength solution
-    imp.reload(wavelength_utils)
+    importlib.reload(wavelength_utils)
     if find_global_wavelength_soln(reduced) is True:
         apply_wavelength_soln(reduced)
     else:
